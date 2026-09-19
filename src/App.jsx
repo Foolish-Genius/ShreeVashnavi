@@ -34,8 +34,7 @@ const PHONE = 'tel:+919837222899';
 const products = [
   { title: 'TallyPrime', text: 'Business management software for accounting, GST, inventory, payroll, and financial reporting.', icon: BarChart3, image: '/assets/images/OIP .webp', tone: 'blue' },
   { title: 'TallyPrime Edit Log', text: 'Track and review changes in business data to improve transparency and audit readiness.', icon: FileCheck2, image: '/assets/images/tallyprime_Editlo71.webp', tone: 'gold' },
-  { title: 'TallyPrime Server', text: 'Centralized multi-user server solution for secure, high-performance business operations.', icon: Server, image: '/assets/images/tally-prime-server-horizontal.svg', tone: 'navy' },
-  { title: 'Shoper 9', text: 'Retail and POS management solution with integrated sales, inventory, and customer operations.', icon: ShoppingBag, image: '/assets/images/shoper-img.svg', tone: 'blue' },
+  { title: 'TPS', text: 'Centralized multi-user server solution for secure, high-performance business operations.', icon: Server, image: '/assets/images/tally-prime-server-horizontal.svg', tone: 'navy' },
   { title: 'Tally Software Services', text: 'Professional services, support, implementation, and customization for Tally users.', icon: LifeBuoy, tone: 'gold' },
   { title: 'TallyPrime Cloud Access', text: 'Cloud access options that help you work remotely with better flexibility and uptime.', icon: Cloud, tone: 'navy' },
   { title: 'TallyDeveloper 9', text: 'Developer environment for building custom solutions and extensions around Tally.', icon: Code2, image: '/assets/images/tally-prime-developer-logo-horizontal.svg', tone: 'blue' },
@@ -83,7 +82,7 @@ function Header() {
             <img src="/assets/images/LogoSVSWhite.jpg" alt="Shree Vaishnavi Software logo" />
             <img className="partner-mark" src="/assets/images/tally-partnerlogo.jpg" alt="Tally Certified 3 Star Partner" />
           </div>
-          <span className="brand-copy"><strong>SHREE VAISHNAVI</strong><small>SOFTWARE • BAREILLY</small></span>
+          <span className="brand-copy" style={{ fontSize: '1.25rem' }}><strong>SHREE VAISHNAVI</strong><small>SOFTWARE • BAREILLY</small></span>
         </Link>
         <button className="menu-button" onClick={() => setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}>{open ? <X /> : <Menu />}</button>
         <nav className={open ? 'main-nav open' : 'main-nav'}>
@@ -122,7 +121,7 @@ function Home() {
           </motion.div>
         </div>
       </section>
-      <div className="trust-strip"><div className="container trust-strip-inner"><span>Powering smarter operations with</span><strong>TallyPrime</strong><strong>TallyPrime Server</strong><strong>Shoper 9</strong><strong>TSS & Cloud</strong></div></div>
+      <div className="trust-strip"><div className="container trust-strip-inner"><span>Powering smarter operations with</span><strong>TallyPrime</strong><strong>TallyPrime Server</strong><strong>TSS</strong><strong>Tally Cloud</strong></div></div>
       <ProductPreview />
       <ServicePreview />
       <TestimonialSection />
@@ -137,7 +136,7 @@ function ProductPreview() {
 
 function ProductCard({ product }) {
   const Icon = product.icon;
-  return <motion.article className={`product-card product-${product.tone}`} variants={fadeUp} whileHover={{ y: -6 }}><div className="product-card-top"><div className="product-icon"><Icon size={20} /></div><span className="product-arrow"><ArrowRight size={18} /></span></div>{product.image ? <div className="product-image"><img src={product.image} alt={product.title} loading="lazy" /></div> : null}<h3>{product.title}</h3><p>{product.text}</p><Link className="card-link" to="/products">Learn more <ArrowRight size={15} /></Link></motion.article>;
+  return <motion.article className={`product-card product-${product.tone}`} variants={fadeUp} whileHover={{ y: -6 }}><div className="product-card-top"><div className="product-icon"><Icon size={20} /></div></div>{product.image ? <div className="product-image"><img src={product.image} alt={product.title} loading="lazy" /></div> : null}<h3>{product.title}</h3><p>{product.text}</p></motion.article>;
 }
 
 function ServicePreview() {
@@ -162,7 +161,40 @@ function Products() {
 
 function Contact() {
   const [submitted, setSubmitted] = useState(false);
-  return <PageLayout eyebrow="Contact" title="Tell us what your business needs." intro="Need TallyPrime, a setup partner, or after-sales support? Send an enquiry and our Bareilly team will get back to you."><section className="section"><div className="container contact-layout"><form className="contact-form" onSubmit={(event) => { event.preventDefault(); setSubmitted(true); }}><div className="form-intro"><span className="form-kicker">Talk to our team</span><h2>Start with a quick enquiry.</h2><p>Share a few details and we’ll guide you from there.</p></div><div className="field-grid"><label>Full name<input required name="name" placeholder="Your name" /></label><label>Business name<input name="business" placeholder="Your business" /></label></div><div className="field-grid"><label>Phone number<input required name="phone" type="tel" placeholder="Your phone number" /></label><label>Email address<input name="email" type="email" placeholder="you@example.com" /></label></div><label>What can we help with?<select name="service" defaultValue=""><option value="" disabled>Select a service</option><option>TallyPrime software sales</option><option>Installation & setup</option><option>GST & accounting support</option><option>After-sales support</option><option>Other</option></select></label><label>Message<textarea name="message" rows="5" placeholder="Tell us about your requirement" /></label><button className="button button-primary" type="submit">{submitted ? 'Enquiry received' : 'Send enquiry'} <ArrowRight size={17} /></button>{submitted && <p className="form-success"><Check size={16} /> Thank you. We will contact you shortly.</p>}</form><aside className="contact-aside"><div className="contact-card"><h3>Visit or reach us</h3><a href={MAP_URL} target="_blank" rel="noreferrer"><MapPin size={18} /><span>428 Indra Nagar<br />Bareilly, Uttar Pradesh - 243122, India</span></a><a href={PHONE}><Phone size={18} /><span>9837222899<br />9359120221</span></a><a href="mailto:svstallybly@gmail.com"><Mail size={18} /><span>svstallybly@gmail.com</span></a><div className="hours"><strong>Business hours</strong><span>Mon - Sat: 9:30 AM - 6:30 PM</span><span>Sunday: By appointment</span></div><a className="button button-whatsapp" href={WHATSAPP_URL} target="_blank" rel="noreferrer"><MessageCircle size={17} /> Chat on WhatsApp</a></div></aside></div></section></PageLayout>;
+  return <PageLayout eyebrow="Contact" title="Tell us what your business needs." intro="Need TallyPrime, a setup partner, or after-sales support? Send an enquiry and our Bareilly team will get back to you."><section className="section"><div className="container contact-layout">
+  <form className="contact-form"
+  action="https://formspree.io/f/xppwwvdo"
+  method="POST"
+  onSubmit={async (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xppwwvdo", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        const data = await response.json();
+        console.error("Formspree error:", data);
+        alert("There was a problem submitting your enquiry. Please try again.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Unable to submit the enquiry. Please try again.");
+    }
+  }}
+>
+<div className="form-intro"><span className="form-kicker">Talk to our team</span><h2>Start with a quick enquiry.</h2><p>Share a few details and we’ll guide you from there.</p></div><div className="field-grid"><label>Full name<input required name="name" placeholder="Your name" /></label><label>Business name<input name="business" placeholder="Your business" /></label></div><div className="field-grid"><label>Phone number<input required name="phone" type="tel" placeholder="Your phone number" /></label><label>Email address<input name="email" type="email" placeholder="you@example.com" /></label></div><label>What can we help with?<select name="service" defaultValue=""><option value="" disabled>Select a service</option><option>TallyPrime software sales</option><option>Installation & setup</option><option>GST & accounting support</option><option>After-sales support</option><option>Other</option></select></label><label>Message<textarea name="message" rows="5" placeholder="Tell us about your requirement" /></label><button className="button button-primary" type="submit">{submitted ? 'Enquiry received' : 'Send enquiry'} <ArrowRight size={17} /></button>{submitted && <p className="form-success"><Check size={16} /> Thank you. We will contact you shortly.</p>}</form><aside className="contact-aside"><div className="contact-card"><h3>Visit or reach us</h3><a href={MAP_URL} target="_blank" rel="noreferrer"><MapPin size={18} /><span>428 Indra Nagar<br />Bareilly, Uttar Pradesh - 243122, India</span></a><a href={PHONE}><Phone size={18} /><span>9837222899<br />9359120221</span></a><a href="mailto:svstallybly@gmail.com"><Mail size={18} /><span>svstallybly@gmail.com</span></a><div className="hours"><strong>Business hours</strong><span>Mon - Sat: 9:30 AM - 6:30 PM</span><span>Sunday: By appointment</span></div><a className="button button-whatsapp" href={WHATSAPP_URL} target="_blank" rel="noreferrer"><MessageCircle size={17} /> Chat on WhatsApp</a></div></aside></div></section></PageLayout>;
 }
 
 function PageLayout({ eyebrow, title, intro, children }) {
@@ -175,7 +207,7 @@ function SectionHeading({ eyebrow, title, copy, action }) {
 }
 
 function Footer() {
-  return <footer className="site-footer"><div className="container footer-grid"><div><Link to="/" className="brand footer-brand"><div className="brand-visuals"><img src="/assets/images/LogoSVSWhite.jpg" alt="Shree Vaishnavi Software logo" /><img className="partner-mark" src="/assets/images/tally-partnerlogo.jpg" alt="Tally Certified 3 Star Partner" /></div><span className="brand-copy"><strong>SHREE VAISHNAVI</strong><small>SOFTWARE • BAREILLY</small></span></Link><p className="footer-copy">Tally software sales, implementation, and practical support for business success.</p></div><div><h3>Explore</h3><Link to="/about">About us</Link><Link to="/products">Products</Link><Link to="/contact">Contact</Link></div><div><h3>Contact</h3><a href={PHONE}>9837222899 · 9359120221</a><a href="mailto:svstallybly@gmail.com">svstallybly@gmail.com</a><a href={MAP_URL} target="_blank" rel="noreferrer">428 Indra Nagar, Bareilly</a></div></div><div className="bottom-bar"><div className="container"><span>© 2026 Shree Vaishnavi Software</span><span>Authorized Tally Certified 3-Star Partner</span></div></div></footer>;
+  return <footer className="site-footer"><div className="container footer-grid"><div><Link to="/" className="brand footer-brand"><div className="brand-visuals"><img src="/assets/images/LogoSVSWhite.jpg" alt="Shree Vaishnavi Software logo" /><img className="partner-mark" src="/assets/images/tally-partnerlogo.jpg" alt="Tally Certified 3 Star Partner" /></div><span className="brand-copy"><strong>SHREE VAISHNAVI</strong><small>SOFTWARE • BAREILLY</small></span></Link><p className="footer-copy">Tally software sales, implementation, and practical support for business success.</p></div><div><h3>Explore</h3><Link to="/about">About us</Link><Link to="/products">Products</Link><Link to="/contact">Contact</Link></div><div><h3>Contact</h3><a href={PHONE}>9837222899 · 9359120221</a><a href="mailto:svstallybly@gmail.com">svstallybly@gmail.com</a><a href={MAP_URL} target="_blank" rel="noreferrer">428 Indra Nagar, Bareilly</a></div></div><div className="bottom-bar"><div className="container"><a href="https://chitranceinfotech.com">© 2026 Chitrance Infotech</a><span>Authorized Tally Certified 3-Star Partner</span></div></div></footer>;
 }
 
 export default App;

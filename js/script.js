@@ -29,28 +29,82 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-    contactForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const button = contactForm.querySelector('button[type="submit"]');
-      const status = contactForm.querySelector('.form-status');
-      if (button) {
-        const originalText = button.textContent;
-        button.textContent = 'Demo Request Received';
-        button.disabled = true;
-        if (status) {
-          status.textContent = 'Thank you. We will contact you shortly. Your accounting guide is ready to download.';
+const contactForm = document.querySelector('#contact-form');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    console.log('FORM SUBMIT EVENT FIRED');
+
+    const formData = new FormData(contactForm);
+
+    console.log('FORM DATA:');
+    for (const [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
+    try {
+      console.log('SENDING TO:', contactForm.action);
+
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      console.log('FORMSPREE STATUS:', response.status);
+
+      const result = await response.json();
+
+      console.log('FORMSPREE RESPONSE:', result);
+
+      if (response.ok) {
+        console.log('SUCCESS');
+
+        const button = contactForm.querySelector(
+          'button[type="submit"]'
+        );
+
+        const status = contactForm.querySelector('.form-status');
+
+        if (button) {
+          button.textContent = 'Demo Request Received';
         }
 
-        setTimeout(() => {
-          button.textContent = originalText;
-          button.disabled = false;
-          contactForm.reset();
-        }, 2000);
+        if (status) {
+          status.textContent =
+            'Thank you. We will contact you shortly.';
+        }
+
+        contactForm.reset();
+
+      } else {
+        console.error('FORMSPREE ERROR:', result);
+
+        const status = contactForm.querySelector('.form-status');
+
+        if (status) {
+          status.textContent =
+            result.errors?.map(error => error.message).join(', ') ||
+            'Form submission failed.';
+        }
       }
-    });
-  }
+
+    } catch (error) {
+      console.error('FETCH ERROR:', error);
+
+      const status = contactForm.querySelector('.form-status');
+
+      if (status) {
+        status.textContent =
+          'Unable to submit the form. Please try again.';
+      }
+    }
+  });
+}
 
   document.querySelectorAll('[data-tabs]').forEach((tabGroup) => {
     const buttons = tabGroup.querySelectorAll('[data-tab]');

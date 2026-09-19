@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
 
-:root { --blue: #0f5fff; --blue-dark: #092f8f; --gold: #f4b942; --navy: #091527; --ink: #111b2d; --muted: #647084; --line: rgba(9, 21, 39, .1); --surface: #f5f8fc; --shadow: 0 22px 70px rgba(9, 35, 79, .12); }
+:root { --blue: #4aa382; --blue-dark: #01412a; --gold: #d1b477; --navy: #01412a; --ink: #111b2d; --muted: #647084; --line: rgba(9, 21, 39, .1); --surface: #f5f8fc; --shadow: 0 22px 70px rgba(9, 35, 79, .12); }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; color: var(--ink); background: #fff; font-family: 'DM Sans', sans-serif; }
@@ -10,13 +10,13 @@ button { cursor: pointer; }
 .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 .app-shell { min-height: 100vh; overflow: hidden; }
 .site-header { position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(18px); }
-.header-inner { min-height: 84px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+.header-inner { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 240px; }
 .brand-visuals { display: flex; align-items: center; gap: 8px; }
-.brand-visuals img:first-child { width: 48px; height: 48px; object-fit: cover; border-radius: 13px; }
-.brand-visuals .partner-mark { width: 92px; height: 32px; object-fit: cover; border-radius: 5px; }
+.brand-visuals img:first-child { width: 128px; height: 108px; object-fit: cover; border-radius: 0px; }
+.brand-visuals .partner-mark { width: 108px; height: 64px; object-fit: cover; border-radius: 0px; }
 .brand-copy { display: grid; gap: 2px; line-height: 1.1; }
-.brand-copy strong { font: 700 .83rem 'Space Grotesk', sans-serif; letter-spacing: .055em; }
+.brand-copy strong { font: 700 1.25rem 'Space Grotesk', sans-serif; letter-spacing: .055em; }
 .brand-copy small { color: var(--muted); font-size: .62rem; letter-spacing: .15em; }
 .main-nav { display: flex; align-items: center; gap: 28px; color: var(--muted); font-size: .92rem; font-weight: 600; }
 .main-nav a { position: relative; padding: 30px 0; }
